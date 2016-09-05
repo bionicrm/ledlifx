@@ -9,9 +9,9 @@ The code is rather personalized, and not much thought was put into different sce
 - main.go
   - `main()` will probably be modified to fit your specific GPIO pins, platform, and the like. See [gobot.io](https://gobot.io) for more on preparing the controller
   - If you run the controller on more than one machine, try modifying the last few bytes of the mocked MAC address in `Start()` for each one so that all machines have a unique MAC
-  - Modify the constants in `configureBulb(...)` to fit your needs, such as the label, location label, and group label. Also, should a LIFX firmware update occur, you may want to update the host firmware build/version and the wifi firmware build. You'll want to copy a few values from an existing LIFX bulb. To obtain them, use the [Clifx](https://github.com/lifx-tools/clifx) tool:
-    - bulb.hostFimware.{build,version} = `clifx -c 1 -p hostfirmware`
-    - bulb.wifiFirwmare.build = `clifx -c 1 -p wififirmware`
+  - Modify the constants in `configureBulb(...)` to fit your needs, such as the label, location label, and group label. Also, should a LIFX firmware update occur, you may want to update the host firmware build/version and the Wi-Fi firmware build. You'll also want to copy a few values from an existing LIFX bulb, since certain properties remain undocumented by LIFX, such as `bulb.location.location`, `bulb.group.group`, and `bulb.owner.*`. To obtain the correct values, use the [Clifx](https://github.com/lifx-tools/clifx) tool in order to copy the information from another LIFX bulb:
+    - bulb.hostFirmware.{build,version} = `clifx -c 1 -p hostfirmware`
+    - bulb.wifiFirmware.build = `clifx -c 1 -p wififirmware`
     - bulb.location.{location,label,updatedAt} = `clifx -c 1 -p location`
     - bulb.group.{group,label,updatedAt} = `clifx -c 1 -p group`
     - bulb.owner.{owner,updatedAt} = `clifx -c 1 -p owner`
